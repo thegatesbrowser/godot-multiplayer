@@ -7,8 +7,6 @@ It has: <br/>
 \- Voice over with 3d positioning <br/>
 \- UI for changing names and tweaking voice volume <br/>
 
-> #### The content in this repository is free to use in personal, educational and commercial projects.
-
 ## Screenshots
 
 <img src="screenshots\hub.png" width="500"> <br/> <br/>
