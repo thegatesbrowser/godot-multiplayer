@@ -24,6 +24,9 @@ static func is_server() -> bool:
 
 
 func start_server() -> void:
+	if max_clients == 0:
+		max_clients = 32
+	
 	var peer = ENetMultiplayerPeer.new()
 	var err = peer.create_server(port, max_clients)
 	if err != OK:

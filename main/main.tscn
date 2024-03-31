@@ -34,6 +34,7 @@ bus = &"Record"
 script = ExtResource("6_fgpqb")
 
 [node name="UI" parent="." instance=ExtResource("4_fvou2")]
+hide_ui_and_connect = false
 
 [node name="Players" type="Node3D" parent="."]
 
