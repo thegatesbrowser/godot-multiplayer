@@ -20,5 +20,6 @@ It has: <br/>
 
 ## Credits
 
-* VoIP extension for Godot 4 - https://github.com/RevoluPowered/one-voip-godot-4
-* Platformer Kit (2.2) - https://www.kenney.nl
+* Platformer Kit (2.2) - https://www.kenney.nl (CC0)
+* VoIP extension for Godot 4 - https://github.com/RevoluPowered/one-voip-godot-4 (MIT)
+* RoboBlast: Third-Person Shooter demo - https://github.com/gdquest-demos/godot-4-3d-third-person-controller (MIT and CC-By 4.0)
