@@ -1,0 +1,11 @@
+[configuration]
+
+entry_symbol = "one_voip_library_init"
+compatibility_minimum = 4.2
+
+[libraries]
+
+windows.release.x86_64="libonevoip.windows.template_debug.x86_64.dll"
+windows.debug.x86_64="libonevoip.windows.template_debug.x86_64.dll"
+linux.release.x86_64="libonevoip.linux.template_debug.x86_64.so"
+linux.debug.x86_64="libonevoip.linux.template_debug.x86_64.so"

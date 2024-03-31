@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://dykqq00uscsiy"]
+
+[ext_resource type="Script" path="res://levels/portal/portal.gd" id="1_4deld"]
+[ext_resource type="Material" uid="uid://ca0wtj0y4axjm" path="res://levels/portal/portal.material" id="2_yk1uj"]
+[ext_resource type="PackedScene" uid="uid://b8hsfhawld5dg" path="res://addons/kenney_platformer_kit/doorOpen.glb" id="3_u08r8"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uqi57"]
+material = ExtResource("2_yk1uj")
+size = Vector2(3.585, 1.63)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gs3cv"]
+size = Vector3(0.3, 3.585, 1.63)
+
+[sub_resource type="Animation" id="Animation_tc7hl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.141]
+}
+
+[sub_resource type="Animation" id="Animation_ea30s"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [5.0, 2.5, 5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kfovg"]
+_data = {
+"RESET": SubResource("Animation_tc7hl"),
+"idle": SubResource("Animation_ea30s")
+}
+
+[node name="Portal" type="Node3D"]
+script = ExtResource("1_4deld")
+
+[node name="Portal" type="Area3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Portal"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1.79371, 0)
+mesh = SubResource("PlaneMesh_uqi57")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Portal"]
+transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, 0, 1.79371, 0)
+mesh = SubResource("PlaneMesh_uqi57")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79371, 0)
+shape = SubResource("BoxShape3D_gs3cv")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Portal"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.751, 0)
+light_color = Color(0.156863, 0.513726, 0.988235, 1)
+light_energy = 3.141
+omni_range = 9.48185
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Portal"]
+libraries = {
+"": SubResource("AnimationLibrary_kfovg")
+}
+autoplay = "idle"
+
+[node name="doorOpen2" parent="." instance=ExtResource("3_u08r8")]
+
+[connection signal="body_entered" from="Portal" to="." method="_on_portal_entered"]

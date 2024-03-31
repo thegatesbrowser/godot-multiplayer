@@ -1,0 +1,173 @@
+[gd_scene load_steps=19 format=3 uid="uid://ciqrpd5675boy"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_pdbxc"]
+[ext_resource type="Script" path="res://player/camera_controller.gd" id="2_2fob2"]
+[ext_resource type="Script" path="res://player/audio_listener.gd" id="2_4csdy"]
+[ext_resource type="Script" path="res://player/camera.gd" id="3_qxleh"]
+[ext_resource type="PackedScene" uid="uid://c0mo8tek77du4" path="res://player/model/character_skin.tscn" id="3_ufinh"]
+[ext_resource type="Script" path="res://ui/floating_nickname.gd" id="6_f61mk"]
+[ext_resource type="Resource" uid="uid://rclnl7v8k722" path="res://user_data/user_data_events.res" id="7_bgpps"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8x2xm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6jd1"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nd4sr"]
+material = SubResource("StandardMaterial3D_g6jd1")
+size = Vector3(0.7, 0.3, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wn7lu"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kin6n"]
+material = SubResource("StandardMaterial3D_wn7lu")
+size = Vector3(0.7, 0.3, 0.5)
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_gqx4v"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_2ooex"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 100.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s5n07"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sr337"]
+font_size = 24
+font_color = Color(1, 1, 1, 0.701961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjie3"]
+bg_color = Color(0.251, 1, 0, 0.7)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_g0ye7"]
+properties/0/path = NodePath(".:_position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:_velocity")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:_direction")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:_strong_direction")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[node name="Player" type="CharacterBody3D" groups=["damageables"]]
+top_level = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_pdbxc")
+
+[node name="CharacterCollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_8x2xm")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, -0.2)
+script = ExtResource("2_4csdy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AudioListener3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_nd4sr")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="AudioListener3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_kin6n")
+
+[node name="CameraController" type="Node3D" parent="."]
+top_level = true
+script = ExtResource("2_2fob2")
+invert_mouse_y = true
+tilt_upper_limit = 0.48
+tilt_lower_limit = -0.8
+
+[node name="CameraSpringArm" type="SpringArm3D" parent="CameraController"]
+transform = Transform3D(-1, -5.15034e-15, -8.74228e-08, -3.23484e-08, 0.929023, 0.370022, 8.12178e-08, 0.370022, -0.929023, 0, 2.33984, 0)
+shape = SubResource("SeparationRayShape3D_gqx4v")
+spring_length = 6.0
+
+[node name="CameraThirdPersonPivot" type="Marker3D" parent="CameraController/CameraSpringArm"]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 0, 0, 1, 1.42109e-14, 2.38419e-07, 10)
+
+[node name="PlayerCamera" type="Camera3D" parent="CameraController"]
+transform = Transform3D(-1, -3.71248e-14, -8.74228e-08, -3.23484e-08, 0.929023, 0.370022, 8.12178e-08, 0.370022, -0.929023, -8.74228e-07, 6.04006, -9.29023)
+top_level = true
+attributes = SubResource("CameraAttributesPractical_2ooex")
+fov = 50.0
+script = ExtResource("3_qxleh")
+
+[node name="GroundShapeCast" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_s5n07")
+target_position = Vector3(0, -2.6, 0)
+margin = 0.5
+max_results = 1
+debug_shape_custom_color = Color(0.658824, 1, 0, 1)
+
+[node name="CharacterRotationRoot" type="Node3D" parent="."]
+
+[node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("3_ufinh")]
+
+[node name="Nickname" type="Control" parent="." node_paths=PackedStringArray("label", "speaking_indicator", "anchor")]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("6_f61mk")
+user_data_events = ExtResource("7_bgpps")
+label = NodePath("HBoxContainer/Nickname")
+speaking_indicator = NodePath("HBoxContainer/Control/SpeakIndicator")
+anchor = NodePath("..")
+offset = Vector3(0, 3, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Nickname"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Nickname" type="Label" parent="Nickname/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Player One"
+label_settings = SubResource("LabelSettings_sr337")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Nickname/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="SpeakIndicator" type="Panel" parent="Nickname/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_right = 13.0
+offset_bottom = 9.0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_bjie3")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_g0ye7")

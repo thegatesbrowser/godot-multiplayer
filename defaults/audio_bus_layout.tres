@@ -1,0 +1,32 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://bjsxjvg1jpdss"]
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_4cwc3"]
+resource_name = "Amplify"
+volume_db = 6.0
+
+[sub_resource type="VOIPInputCapture" id="VOIPInputCapture_gsvqe"]
+resource_name = "VOIPInputCapture"
+
+[resource]
+bus/1/name = &"Character"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -9.63278
+bus/1/send = &"Master"
+bus/2/name = &"Speak"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 6.02
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectAmplify_4cwc3")
+bus/2/effect/0/enabled = true
+bus/3/name = &"Record"
+bus/3/solo = false
+bus/3/mute = true
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("VOIPInputCapture_gsvqe")
+bus/3/effect/0/enabled = true

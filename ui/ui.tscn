@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvl4jsitsxp0u"]
+
+[ext_resource type="Script" path="res://ui/ui.gd" id="1_3uiwb"]
+[ext_resource type="Script" path="res://ui/mouse_mode.gd" id="2_rhohj"]
+[ext_resource type="Script" path="res://ui/player_panel_contiainer.gd" id="4_0te8w"]
+[ext_resource type="Resource" uid="uid://rclnl7v8k722" path="res://user_data/user_data_events.res" id="5_tmjbr"]
+[ext_resource type="PackedScene" uid="uid://dpre6ebljycx4" path="res://ui/player_panel.tscn" id="6_lta7j"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_3uiwb")
+hide_ui_and_connect = true
+
+[node name="MainMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -52.0
+offset_right = 150.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Server" type="Button" parent="MainMenu/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Server"
+
+[node name="Client" type="Button" parent="MainMenu/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Client"
+
+[node name="InGameUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="MouseMode" type="Control" parent="InGameUI"]
+anchors_preset = 0
+script = ExtResource("2_rhohj")
+
+[node name="MarginContainer" type="MarginContainer" parent="InGameUI"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_bottom = 40
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InGameUI/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InGameUI/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_0te8w")
+user_data_events = ExtResource("5_tmjbr")
+player_panel = ExtResource("6_lta7j")
+
+[connection signal="pressed" from="MainMenu/Buttons/Server" to="." method="start_server_emit"]
+[connection signal="pressed" from="MainMenu/Buttons/Client" to="." method="connect_client_emit"]

@@ -1,0 +1,11 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://cgqlrwpgos8m3"]
+
+[ext_resource type="Sky" uid="uid://jonn5eom7asv" path="res://defaults/sky/blue_sky.tres" id="1_x1dgc"]
+
+[resource]
+background_mode = 2
+sky = ExtResource("1_x1dgc")
+tonemap_mode = 2
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true

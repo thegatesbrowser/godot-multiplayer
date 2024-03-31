@@ -1,0 +1,260 @@
+[gd_scene load_steps=25 format=3 uid="uid://enpjmjm7ayyu"]
+
+[ext_resource type="Environment" uid="uid://cgqlrwpgos8m3" path="res://defaults/world_environment.tres" id="1_o5c6e"]
+[ext_resource type="PackedScene" uid="uid://bdvht85heque" path="res://addons/kenney_platformer_kit/platform.glb" id="2_gdd4m"]
+[ext_resource type="Script" path="res://main/spawn_points.gd" id="2_nfojo"]
+[ext_resource type="PackedScene" uid="uid://bh6yhe1c846yu" path="res://addons/kenney_platformer_kit/blockLarge.glb" id="3_vpp8y"]
+[ext_resource type="PackedScene" uid="uid://bilg3cgxxv2h5" path="res://addons/kenney_platformer_kit/block.glb" id="4_2mpoj"]
+[ext_resource type="PackedScene" uid="uid://dk3fmh7w4p32n" path="res://addons/kenney_platformer_kit/blockHexagonLow.glb" id="5_fancp"]
+[ext_resource type="PackedScene" uid="uid://b7f14irjkssxh" path="res://addons/kenney_platformer_kit/fence.glb" id="6_hc7m2"]
+[ext_resource type="PackedScene" uid="uid://b1vcjxo7tp8p7" path="res://addons/kenney_platformer_kit/fenceCorner.glb" id="7_mq6s7"]
+[ext_resource type="PackedScene" uid="uid://i7ty3umvwfym" path="res://addons/kenney_platformer_kit/tree.glb" id="9_k5p1f"]
+[ext_resource type="PackedScene" uid="uid://cary0vonlsgks" path="res://addons/kenney_platformer_kit/treePine.glb" id="10_ivsks"]
+[ext_resource type="PackedScene" uid="uid://cpx78xdlfvboi" path="res://addons/kenney_platformer_kit/treePineSmall.glb" id="11_ija7e"]
+[ext_resource type="PackedScene" uid="uid://qhy1y5pyo44w" path="res://addons/kenney_platformer_kit/stones.glb" id="12_ratwt"]
+[ext_resource type="PackedScene" uid="uid://beid4i25wh5e4" path="res://addons/kenney_platformer_kit/rocks.glb" id="13_ffu0y"]
+[ext_resource type="PackedScene" uid="uid://uxgnagsciot4" path="res://addons/kenney_platformer_kit/plant.glb" id="14_s7tov"]
+[ext_resource type="PackedScene" uid="uid://d3t7uiutnveue" path="res://addons/kenney_platformer_kit/mushrooms.glb" id="15_sr2w5"]
+[ext_resource type="PackedScene" uid="uid://chwks7s6o3os3" path="res://addons/kenney_platformer_kit/fenceLow.glb" id="17_cpe3a"]
+[ext_resource type="PackedScene" uid="uid://di4rwrfoqrq6p" path="res://addons/kenney_platformer_kit/fenceLowCorner.glb" id="18_0xt7e"]
+[ext_resource type="PackedScene" uid="uid://b1bnqe5sgno0k" path="res://addons/kenney_platformer_kit/crate.glb" id="19_kb4ci"]
+[ext_resource type="PackedScene" uid="uid://bgfpp81rtuc0s" path="res://addons/kenney_platformer_kit/blockSlope.glb" id="20_dpqmy"]
+[ext_resource type="PackedScene" uid="uid://b8f3kwrfi45ok" path="res://addons/kenney_platformer_kit/arrows.glb" id="21_5n823"]
+[ext_resource type="PackedScene" uid="uid://c3bqcbsjp74ro" path="res://addons/kenney_platformer_kit/blockCliffCorner.glb" id="21_f6kka"]
+[ext_resource type="PackedScene" uid="uid://n47fvgk8twbn" path="res://addons/kenney_platformer_kit/flowers.glb" id="22_5cyu8"]
+[ext_resource type="PackedScene" uid="uid://c8n1vfsyxx50l" path="res://addons/kenney_platformer_kit/flowersLow.glb" id="23_36p3d"]
+[ext_resource type="PackedScene" uid="uid://dykqq00uscsiy" path="res://levels/portal/portal.tscn" id="25_yv8ub"]
+
+[node name="HubLevel" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.25, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_o5c6e")
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+script = ExtResource("2_nfojo")
+
+[node name="platform2" parent="SpawnPoints" instance=ExtResource("2_gdd4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 4, 4)
+
+[node name="platform3" parent="SpawnPoints" instance=ExtResource("2_gdd4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 8, -24)
+
+[node name="platform4" parent="SpawnPoints" instance=ExtResource("2_gdd4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 4, 0)
+
+[node name="Ground" type="Node3D" parent="."]
+
+[node name="blockLarge2" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="blockLarge3" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 8)
+
+[node name="blockLarge4" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8)
+
+[node name="blockLarge5" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -8)
+
+[node name="blockLarge6" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+
+[node name="blockLarge7" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 8)
+
+[node name="blockLarge8" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
+
+[node name="blockLarge9" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="blockLarge10" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+
+[node name="blockLarge15" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="blockLarge16" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 8)
+
+[node name="blockLarge25" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 16)
+
+[node name="blockLarge17" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -8)
+
+[node name="blockLarge18" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
+
+[node name="blockLarge19" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="blockLarge20" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
+
+[node name="blockLarge24" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 16)
+
+[node name="blockLarge21" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 8)
+
+[node name="blockLarge22" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="blockLarge23" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -8)
+
+[node name="block2" parent="Ground" instance=ExtResource("4_2mpoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 4, 10)
+
+[node name="blockLarge11" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, -16)
+
+[node name="blockLarge12" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, -24)
+
+[node name="blockLarge13" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, -16)
+
+[node name="blockLarge14" parent="Ground" instance=ExtResource("3_vpp8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, -24)
+
+[node name="blockHexagonLow2" parent="Ground" instance=ExtResource("5_fancp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 4, -11)
+
+[node name="blockSlope2" parent="Ground" instance=ExtResource("20_dpqmy")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18, 4, 10)
+
+[node name="blockCliffCorner2" parent="Ground" instance=ExtResource("21_f6kka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4, -14)
+
+[node name="Env" type="Node3D" parent="."]
+
+[node name="fence2" parent="Env" instance=ExtResource("6_hc7m2")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8, 4, 16)
+
+[node name="fenceCorner2" parent="Env" instance=ExtResource("7_mq6s7")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 4, 16)
+
+[node name="fenceCorner3" parent="Env" instance=ExtResource("7_mq6s7")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12, 4, 16)
+
+[node name="fenceCorner4" parent="Env" instance=ExtResource("7_mq6s7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 4, 12)
+
+[node name="fenceCorner5" parent="Env" instance=ExtResource("7_mq6s7")]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 4, 12)
+
+[node name="fenceCorner6" parent="Env" instance=ExtResource("7_mq6s7")]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 21, 4, -9)
+
+[node name="tree2" parent="Env" instance=ExtResource("9_k5p1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 4, 9)
+
+[node name="tree3" parent="Env" instance=ExtResource("9_k5p1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 4, -6)
+
+[node name="treePine2" parent="Env" instance=ExtResource("10_ivsks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4, -9)
+
+[node name="treePineSmall2" parent="Env" instance=ExtResource("11_ija7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4, 8)
+
+[node name="stones2" parent="Env" instance=ExtResource("12_ratwt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, -7)
+
+[node name="stones3" parent="Env" instance=ExtResource("12_ratwt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, -5)
+
+[node name="stones4" parent="Env" instance=ExtResource("12_ratwt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 4, 6)
+
+[node name="rocks2" parent="Env" instance=ExtResource("13_ffu0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, -9)
+
+[node name="plant2" parent="Env" instance=ExtResource("14_s7tov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, -6)
+
+[node name="plant3" parent="Env" instance=ExtResource("14_s7tov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 4, -4)
+
+[node name="plant4" parent="Env" instance=ExtResource("14_s7tov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 4, 6)
+
+[node name="plant5" parent="Env" instance=ExtResource("14_s7tov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4, 8)
+
+[node name="plant6" parent="Env" instance=ExtResource("14_s7tov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, 14)
+
+[node name="plant7" parent="Env" instance=ExtResource("14_s7tov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4, 16)
+
+[node name="plant8" parent="Env" instance=ExtResource("14_s7tov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, 16)
+
+[node name="mushrooms2" parent="Env" instance=ExtResource("15_sr2w5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -9)
+
+[node name="fenceLow2" parent="Env" instance=ExtResource("17_cpe3a")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 8, -17)
+
+[node name="fenceLow3" parent="Env" instance=ExtResource("17_cpe3a")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 8, -21)
+
+[node name="fenceLowCorner2" parent="Env" instance=ExtResource("18_0xt7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 8, -25)
+
+[node name="fenceLow4" parent="Env" instance=ExtResource("17_cpe3a")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2, 8, -21)
+
+[node name="fenceLow5" parent="Env" instance=ExtResource("17_cpe3a")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2, 8, -17)
+
+[node name="fenceLowCorner3" parent="Env" instance=ExtResource("18_0xt7e")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2, 8, -25)
+
+[node name="crate2" parent="Env" instance=ExtResource("19_kb4ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, -25)
+
+[node name="crate3" parent="Env" instance=ExtResource("19_kb4ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, -23)
+
+[node name="crate4" parent="Env" instance=ExtResource("19_kb4ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10, -24)
+
+[node name="crate5" parent="Env" instance=ExtResource("19_kb4ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 4, 5)
+
+[node name="arrows2" parent="Env" instance=ExtResource("21_5n823")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 20, 4, -7)
+
+[node name="flowers2" parent="Env" instance=ExtResource("22_5cyu8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, -18)
+
+[node name="flowersLow2" parent="Env" instance=ExtResource("23_36p3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 8, -16)
+
+[node name="flowersLow3" parent="Env" instance=ExtResource("23_36p3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8, -20)
+
+[node name="plant9" parent="Env" instance=ExtResource("14_s7tov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, -20)
+
+[node name="plant10" parent="Env" instance=ExtResource("14_s7tov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, -14)
+
+[node name="plant11" parent="Env" instance=ExtResource("14_s7tov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 8, -18)
+
+[node name="Portals" type="Node3D" parent="."]
+
+[node name="Portal" parent="Portals" instance=ExtResource("25_yv8ub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 8, -26)
+
+[node name="Portal2" parent="Portals" instance=ExtResource("25_yv8ub")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22, 4, -3)

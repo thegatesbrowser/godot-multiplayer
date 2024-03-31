@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjywb13vy4hl4"]
+
+[ext_resource type="Script" path="res://voip/voip_user.gd" id="1_wo4b3"]
+[ext_resource type="Resource" uid="uid://rclnl7v8k722" path="res://user_data/user_data_events.res" id="2_mt25f"]
+
+[sub_resource type="AudioStreamVOIP" id="AudioStreamVOIP_mku04"]
+resource_local_to_scene = true
+
+[sub_resource type="Curve" id="Curve_q0foc"]
+bake_resolution = 1000
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.142241, 0.010989), 0.0, 0.0, 0, 0, Vector2(0.37069, 0.0219779), 0.0, 0.0, 0, 0, Vector2(0.857759, 0.241758), 1.31335, 1.31335, 0, 0, Vector2(1, 1), 11.7496, 0.0, 0, 0]
+point_count = 5
+
+[node name="VoipUser" type="AudioStreamPlayer3D"]
+stream = SubResource("AudioStreamVOIP_mku04")
+attenuation_model = 1
+volume_db = -12.0
+unit_size = 15.0
+max_db = 6.0
+autoplay = true
+max_distance = 30.0
+bus = &"Speak"
+doppler_tracking = 2
+script = ExtResource("1_wo4b3")
+offset = Vector3(0, 2, 0)
+volume_curve = SubResource("Curve_q0foc")
+user_data_events = ExtResource("2_mt25f")
