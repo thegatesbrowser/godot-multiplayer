@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dykqq00uscsiy"]
 
-[ext_resource type="Script" path="res://levels/portal/portal.gd" id="1_4deld"]
+[ext_resource type="Script" uid="uid://bdvyr54fhymd8" path="res://levels/portal/portal.gd" id="1_4deld"]
 [ext_resource type="Material" uid="uid://ca0wtj0y4axjm" path="res://levels/portal/portal.material" id="2_yk1uj"]
 [ext_resource type="PackedScene" uid="uid://b8hsfhawld5dg" path="res://addons/kenney_platformer_kit/doorOpen.glb" id="3_u08r8"]
 
@@ -45,8 +45,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kfovg"]
 _data = {
-"RESET": SubResource("Animation_tc7hl"),
-"idle": SubResource("Animation_ea30s")
+&"RESET": SubResource("Animation_tc7hl"),
+&"idle": SubResource("Animation_ea30s")
 }
 
 [node name="Portal" type="Node3D"]

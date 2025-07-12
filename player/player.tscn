@@ -1,11 +1,11 @@
 [gd_scene load_steps=19 format=3 uid="uid://ciqrpd5675boy"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_pdbxc"]
-[ext_resource type="Script" path="res://player/camera_controller.gd" id="2_2fob2"]
-[ext_resource type="Script" path="res://player/audio_listener.gd" id="2_4csdy"]
-[ext_resource type="Script" path="res://player/camera.gd" id="3_qxleh"]
+[ext_resource type="Script" uid="uid://ccpc121u6xmyf" path="res://player/player.gd" id="1_pdbxc"]
+[ext_resource type="Script" uid="uid://dwxcjtn7c1ei4" path="res://player/camera_controller.gd" id="2_2fob2"]
+[ext_resource type="Script" uid="uid://o63ivg4s4l5o" path="res://player/audio_listener.gd" id="2_4csdy"]
+[ext_resource type="Script" uid="uid://c54m6p83hnjyl" path="res://player/camera.gd" id="3_qxleh"]
 [ext_resource type="PackedScene" uid="uid://c0mo8tek77du4" path="res://player/model/character_skin.tscn" id="3_ufinh"]
-[ext_resource type="Script" path="res://ui/floating_nickname.gd" id="6_f61mk"]
+[ext_resource type="Script" uid="uid://74phah5dnq4x" path="res://ui/floating_nickname.gd" id="6_f61mk"]
 [ext_resource type="Resource" uid="uid://rclnl7v8k722" path="res://user_data/user_data_events.res" id="7_bgpps"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8x2xm"]

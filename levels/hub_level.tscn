@@ -2,7 +2,7 @@
 
 [ext_resource type="Environment" uid="uid://cgqlrwpgos8m3" path="res://defaults/world_environment.tres" id="1_o5c6e"]
 [ext_resource type="PackedScene" uid="uid://bdvht85heque" path="res://addons/kenney_platformer_kit/platform.glb" id="2_gdd4m"]
-[ext_resource type="Script" path="res://main/spawn_points.gd" id="2_nfojo"]
+[ext_resource type="Script" uid="uid://br5xu4jvkvpm6" path="res://main/spawn_points.gd" id="2_nfojo"]
 [ext_resource type="PackedScene" uid="uid://bh6yhe1c846yu" path="res://addons/kenney_platformer_kit/blockLarge.glb" id="3_vpp8y"]
 [ext_resource type="PackedScene" uid="uid://bilg3cgxxv2h5" path="res://addons/kenney_platformer_kit/block.glb" id="4_2mpoj"]
 [ext_resource type="PackedScene" uid="uid://dk3fmh7w4p32n" path="res://addons/kenney_platformer_kit/blockHexagonLow.glb" id="5_fancp"]
