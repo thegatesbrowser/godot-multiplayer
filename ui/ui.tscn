@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cvl4jsitsxp0u"]
 
-[ext_resource type="Script" path="res://ui/ui.gd" id="1_3uiwb"]
-[ext_resource type="Script" path="res://ui/mouse_mode.gd" id="2_rhohj"]
-[ext_resource type="Script" path="res://ui/player_panel_contiainer.gd" id="4_0te8w"]
+[ext_resource type="Script" uid="uid://c2wjq5gyp82kd" path="res://ui/ui.gd" id="1_3uiwb"]
+[ext_resource type="Script" uid="uid://cnttwj1d0772f" path="res://ui/mouse_mode.gd" id="2_rhohj"]
+[ext_resource type="Script" uid="uid://b7utl83ieo61" path="res://ui/player_panel_contiainer.gd" id="4_0te8w"]
 [ext_resource type="Resource" uid="uid://rclnl7v8k722" path="res://user_data/user_data_events.res" id="5_tmjbr"]
 [ext_resource type="PackedScene" uid="uid://dpre6ebljycx4" path="res://ui/player_panel.tscn" id="6_lta7j"]
 
@@ -26,7 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Buttons" type="VBoxContainer" parent="MainMenu"]
+[node name="MenuContainer" type="VBoxContainer" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,21 +34,50 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -52.0
+offset_top = -130.0
 offset_right = 150.0
-offset_bottom = 52.0
+offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Server" type="Button" parent="MainMenu/Buttons"]
+[node name="IPSection" type="VBoxContainer" parent="MainMenu/MenuContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="IPLabel" type="Label" parent="MainMenu/MenuContainer/IPSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Server IP Address:"
+horizontal_alignment = 1
+
+[node name="IPInput" type="LineEdit" parent="MainMenu/MenuContainer/IPSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Enter IP address (e.g., 192.168.1.100)"
+text = "localhost"
+alignment = 1
+
+[node name="Spacer" type="Control" parent="MainMenu/MenuContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="MainMenu/MenuContainer"]
+layout_mode = 2
+
+[node name="Server" type="Button" parent="MainMenu/MenuContainer/Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Server"
 
-[node name="Client" type="Button" parent="MainMenu/Buttons"]
+[node name="Client" type="Button" parent="MainMenu/MenuContainer/Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Client"
+
+[node name="Exit" type="Button" parent="MainMenu/MenuContainer/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit"
 
 [node name="InGameUI" type="Control" parent="."]
 layout_mode = 1
@@ -83,5 +112,6 @@ script = ExtResource("4_0te8w")
 user_data_events = ExtResource("5_tmjbr")
 player_panel = ExtResource("6_lta7j")
 
-[connection signal="pressed" from="MainMenu/Buttons/Server" to="." method="start_server_emit"]
-[connection signal="pressed" from="MainMenu/Buttons/Client" to="." method="connect_client_emit"]
+[connection signal="pressed" from="MainMenu/MenuContainer/Buttons/Server" to="." method="start_server_emit"]
+[connection signal="pressed" from="MainMenu/MenuContainer/Buttons/Client" to="." method="connect_client_emit"]
+[connection signal="pressed" from="MainMenu/MenuContainer/Buttons/Exit" to="." method="exit_game_emit"]

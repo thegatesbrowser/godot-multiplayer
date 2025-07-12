@@ -42,10 +42,14 @@ func start_server() -> void:
 	multiplayer.peer_disconnected.connect(peer_disconnected)
 
 
-func start_client() -> void:
-	var address = host
-	if OS.has_feature("editor") and use_localhost_in_editor:
-		address = "localhost"
+func start_client(ip_address: String = "") -> void:
+	var address = ip_address
+	if address.is_empty():
+		address = host
+		if OS.has_feature("editor") and use_localhost_in_editor:
+			address = "localhost"
+	
+	print("Connecting to server at: " + address)
 	
 	var peer = ENetMultiplayerPeer.new()
 	var err = peer.create_client(address, port)

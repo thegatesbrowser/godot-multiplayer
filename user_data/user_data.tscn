@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr5qcabhh7k8s"]
 
-[ext_resource type="Script" path="res://user_data/user_data.gd" id="1_hoick"]
+[ext_resource type="Script" uid="uid://5p8u4y30jdge" path="res://user_data/user_data.gd" id="1_hoick"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nr88d"]
 properties/0/path = NodePath(".:speaking")

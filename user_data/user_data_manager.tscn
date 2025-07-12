@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://2ne27phhv0kl"]
 
-[ext_resource type="Script" path="res://user_data/user_data_manager.gd" id="1_ncmb5"]
+[ext_resource type="Script" uid="uid://n4jthxifpvkd" path="res://user_data/user_data_manager.gd" id="1_ncmb5"]
 [ext_resource type="PackedScene" uid="uid://dr5qcabhh7k8s" path="res://user_data/user_data.tscn" id="2_uff5g"]
 [ext_resource type="Resource" uid="uid://rclnl7v8k722" path="res://user_data/user_data_events.res" id="2_xtofl"]
-[ext_resource type="Script" path="res://user_data/user_data_spawner.gd" id="3_2xjq6"]
+[ext_resource type="Script" uid="uid://bxgucr2pxgna4" path="res://user_data/user_data_spawner.gd" id="3_2xjq6"]
 
 [node name="UserDataManager" type="Node" node_paths=PackedStringArray("user_data_spawner")]
 script = ExtResource("1_ncmb5")

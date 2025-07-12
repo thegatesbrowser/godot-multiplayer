@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://dpre6ebljycx4"]
 
-[ext_resource type="Script" path="res://ui/player_panel.gd" id="1_hxm32"]
+[ext_resource type="Script" uid="uid://cjpsrt7jscpsg" path="res://ui/player_panel.gd" id="1_hxm32"]
 [ext_resource type="Resource" uid="uid://rclnl7v8k722" path="res://user_data/user_data_events.res" id="2_y2iyx"]
-[ext_resource type="Script" path="res://ui/change_name.gd" id="3_yfkbo"]
+[ext_resource type="Script" uid="uid://bswv8rp4q8gdg" path="res://ui/change_name.gd" id="3_yfkbo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmqoe"]
 resource_local_to_scene = true
@@ -178,8 +178,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mruyl"]
 _data = {
-"RESET": SubResource("Animation_tisq7"),
-"my_panel": SubResource("Animation_2fcr5")
+&"RESET": SubResource("Animation_tisq7"),
+&"my_panel": SubResource("Animation_2fcr5")
 }
 
 [node name="PlayerPanel" type="Control" node_paths=PackedStringArray("nickname_edit", "volume_slider", "speaking_indicator", "animation_player")]

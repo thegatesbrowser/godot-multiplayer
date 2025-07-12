@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjywb13vy4hl4"]
 
-[ext_resource type="Script" path="res://voip/voip_user.gd" id="1_wo4b3"]
+[ext_resource type="Script" uid="uid://cpoaxv1vixoth" path="res://voip/voip_user.gd" id="1_wo4b3"]
 [ext_resource type="Resource" uid="uid://rclnl7v8k722" path="res://user_data/user_data_events.res" id="2_mt25f"]
 
 [sub_resource type="AudioStreamVOIP" id="AudioStreamVOIP_mku04"]
