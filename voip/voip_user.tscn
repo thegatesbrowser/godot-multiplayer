@@ -3,8 +3,7 @@
 [ext_resource type="Script" path="res://voip/voip_user.gd" id="1_wo4b3"]
 [ext_resource type="Resource" uid="uid://rclnl7v8k722" path="res://user_data/user_data_events.res" id="2_mt25f"]
 
-[sub_resource type="AudioStreamVOIP" id="AudioStreamVOIP_mku04"]
-resource_local_to_scene = true
+[sub_resource type="AudioStreamOpusChunked" id="AudioStreamOpusChunked_ess21"]
 
 [sub_resource type="Curve" id="Curve_q0foc"]
 bake_resolution = 1000
@@ -12,7 +11,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.142241, 0.010989), 0.0, 0.0, 0
 point_count = 5
 
 [node name="VoipUser" type="AudioStreamPlayer3D"]
-stream = SubResource("AudioStreamVOIP_mku04")
+stream = SubResource("AudioStreamOpusChunked_ess21")
 attenuation_model = 1
 volume_db = -12.0
 unit_size = 15.0

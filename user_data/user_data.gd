@@ -20,4 +20,6 @@ var id: int
 
 func _process(_delta: float) -> void:
 	if not is_multiplayer_authority(): return
-	speaking = Microphone.is_speaking
+
+	if speaking != Microphone.is_speaking:
+		speaking = Microphone.is_speaking
