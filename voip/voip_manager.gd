@@ -4,6 +4,7 @@ extends Node
 @export var player_spawner: PlayerSpawner
 
 var opuschunked: AudioEffectOpusChunked
+var prepend: PackedByteArray = PackedByteArray()
 var users = {} # {Peer ID: VoipUser}
 
 
@@ -47,18 +48,23 @@ func _process(_delta: float) -> void:
 	if not Connection.is_peer_connected: return
 	if multiplayer.is_server(): return
 	
-	var prepend = PackedByteArray()
+	var accumulated_opusdata: Array[PackedByteArray] = []
 	while opuschunked.chunk_available():
+		if not Microphone.is_speaking:
+			opuschunked.drop_chunk()
+			continue
+		
 		var opusdata: PackedByteArray = opuschunked.read_opus_packet(prepend)
 		opuschunked.drop_chunk()
-		
-		if not Microphone.is_speaking: continue
-		rpc("opus_data_received", opusdata)
+		accumulated_opusdata.append(opusdata)
+	
+	if Microphone.is_speaking:
+		rpc("opus_data_received", accumulated_opusdata)
 
 
 @rpc("any_peer", "call_remote", "unreliable_ordered", 1)
-func opus_data_received(opusdata: PackedByteArray) -> void:
+func opus_data_received(opusdata_array: Array[PackedByteArray]) -> void:
 	if multiplayer.is_server(): return
 	
 	var sender_id = multiplayer.get_remote_sender_id()
-	users[sender_id].opuspacketsbuffer.append(opusdata)
+	users[sender_id].opuspacketsbuffer.append_array(opusdata_array)
